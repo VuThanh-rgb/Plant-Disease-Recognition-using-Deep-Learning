@@ -20,7 +20,7 @@ plant_disease_project/
 └── tests/test_labels_and_splits.py   <- kiểm thử không cần GPU
 ```
 
-Cách chạy: tải 3 dataset **một lần** và đặt vào thư mục `data/` (notebook chỉ kiểm tra, không tự tải):
+Cách chạy: tải 3 dataset **một lần** và đặt vào thư mục `data/`:
 
 ```
 data/<bất kỳ>/plantvillage dataset/color/<lớp>/*.jpg   (PlantVillage)
@@ -52,7 +52,7 @@ PlantWild: giấy phép **CC BY-NC-ND 4.0**, dung lượng ~4,35 GB.
 | **PlantDoc** | **Chỉ test, không bao giờ train** | quá nhỏ để train (~8–10 ảnh/lớp ở tập test), nhưng độc lập với PlantWild |
 | ~~PlantWild v2~~ | **Bỏ** | không có lá khỏe (không map được các lớp `healthy` của PlantVillage), không có split chính thức |
 
-**Vì sao không trộn cả ba để train?** Khi đó không còn tập kiểm tra độc lập, mà đề tài của bạn là *đánh giá tổng quát hóa*.
+**Vì sao không trộn cả ba để train?** Khi đó không còn tập kiểm tra độc lập.
 
 **Vì sao PlantDoc đánh giá trên toàn bộ ~2,5k ảnh thay vì ~230 ảnh test?** Vì ta không train trên nó. Sai số chuẩn (độ tin cậy 95%) của accuracy ~70%:
 
@@ -80,11 +80,3 @@ Thời gian ước lượng thô cho phương án A trên Colab T4: khoảng 1,5
 3. **S2**: chọn kiến trúc tốt nhất bằng *val ảnh thực tế*, fine-tune trên PlantWild-train (lấy mẫu cân bằng lớp, lr thấp) → đo lại.
 4. **Chỉ số**: accuracy, macro-F1 (cả khi giới hạn trong các lớp có mặt và khi dùng đủ 38 lớp), `gap_vs_PV`.
 5. **Phân tích**: confusion matrix, báo cáo từng lớp, Grad-CAM trước/sau fine-tune, ablation augmentation (tùy chọn).
-
-## 4. Những điều cần kiểm tra khi chạy thật (trung thực về giới hạn)
-
-- **Tôi chưa huấn luyện thật**: môi trường của tôi không có GPU và không đủ chỗ cài PyTorch. Đã kiểm thử thật: ánh xạ nhãn (38 lớp PlantVillage + 28 tên lớp kiểu PlantDoc), quét thư mục, chia tập, báo cáo độ phủ, phát hiện ảnh trùng, và cú pháp toàn bộ mã/notebook. Phần huấn luyện/Grad-CAM chưa chạy; nếu gặp lỗi khi chạy lần đầu, gửi lại traceback để tôi sửa.
-- **PlantWild**: tôi chưa xác minh cấu trúc thư mục sau khi giải nén (có thể gồm cả v1 và v2). Cell 3.3 in cấu trúc ra; chỉnh `Config.pw_exclude` nếu tên thư mục v2 khác `"v2"`.
-- **Ánh xạ nhãn là gần đúng**, ví dụ giả định `Bell_pepper leaf spot` (PlantDoc) ≈ `bacterial spot` (PlantVillage). Sửa bằng `manual_label_overrides`.
-- **PV-test có thể lạc quan** vì PlantVillage chứa nhiều ảnh cùng một chiếc lá giữa các split. Đây cũng là lý do cần test xuyên dataset.
-- Giấy phép PlantWild (NC-ND): chỉ dùng học thuật, không đăng lại ảnh đã resize/chỉnh sửa.
