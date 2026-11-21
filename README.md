@@ -1,5 +1,19 @@
 # Nhận diện bệnh cây trồng từ ảnh lá + đánh giá tổng quát hóa đa dataset
 
+## Dữ liệu
+
+| Dataset | Vai trò trong đề tài | Nguồn |
+|---|---|---|
+| **PlantVillage** (~54k ảnh, 38 lớp) | Huấn luyện nguồn, test trong miền | [GitHub](https://github.com/spMohanty/PlantVillage-Dataset) · [Kaggle](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset) |
+| **PlantDoc** (bản phân loại, ~2,6k ảnh, 28 lớp) | Test độc lập ngoài đồng ruộng, không dùng để train | [GitHub](https://github.com/pratikkayal/PlantDoc-Dataset) |
+| **PlantWild v1** (18.542 ảnh, 89 lớp) | Fine-tune và test ảnh thực tế | [Hugging Face](https://huggingface.co/datasets/uqtwei2/PlantWild) |
+
+Dữ liệu **không** được đăng kèm repo. Tải về và đặt vào `data/` theo hướng dẫn ở trên.
+
+### Trích dẫn
+- Hughes, D. P., Salathé, M. (2015). *An open access repository of images on plant health to enable the development of mobile disease diagnostics.* arXiv:1511.08060.
+- Singh, D. et al. (2020). *PlantDoc: A Dataset for Visual Plant Disease Detection.* CoDS-COMAD 2020. arXiv:1911.10317.
+
 ## 1. Cấu trúc dự án
 
 ```
