@@ -8,7 +8,7 @@
 | **PlantDoc** (bản phân loại, ~2,6k ảnh, 28 lớp) | Test độc lập ngoài đồng ruộng, không dùng để train | [GitHub](https://github.com/pratikkayal/PlantDoc-Dataset) |
 | **PlantWild v1** (18.542 ảnh, 89 lớp) | Fine-tune và test ảnh thực tế | [Hugging Face](https://huggingface.co/datasets/uqtwei2/PlantWild) |
 
-Dữ liệu **không** được đăng kèm repo. Tải về và đặt vào `data/` theo hướng dẫn ở trên.
+Dữ liệu **không** được đăng kèm repo. Tải về và đặt vào `data/` theo hướng dẫn bên dưới.
 
 ### Trích dẫn
 - Hughes, D. P., Salathé, M. (2015). *An open access repository of images on plant health to enable the development of mobile disease diagnostics.* arXiv:1511.08060.
